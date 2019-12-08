@@ -16,12 +16,7 @@ def multiply(program, index):
     program[destination_index] = a * b
     return (program, index + 4)
 
-if __name__ == "__main__":
-    INPUT_FILEPATH = sys.argv[1]
-
-    with open(INPUT_FILEPATH, 'r') as input_file:
-        program = [int(number) for number in input_file.readline().split(",")]
-
+def run_program(program):
     running = True
     index = 0
     while running:
@@ -32,4 +27,12 @@ if __name__ == "__main__":
             program, index = add(program, index)
         elif operation == 2:
             program, index = multiply(program, index)
-    print(program)
+    return(program)
+
+if __name__ == "__main__":
+    INPUT_FILEPATH = sys.argv[1]
+
+    with open(INPUT_FILEPATH, 'r') as input_file:
+        program = [int(number) for number in input_file.readline().split(",")]
+
+    print(run_program(program))
